@@ -1,3 +1,4 @@
+//ì‹œê°„ì—†ì–´ì„œ ì‹¤íŒ¨
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -17,16 +18,16 @@ vector< point >P;
 point p, temp1, temp2, Next, Prev;
 vector<point>convex;
 
-long long int ccw(point a, point b, point c) {//±âÁØÁ¡ a À½¼ö >> ¿ìÈ¸Àü ¾ç¼ö >> ÁÂÈ¸Àü 0 >> ÀÏÁ÷¼±»ó
+long long int ccw(point a, point b, point c) {//ê¸°ì¤€ì  a ìŒìˆ˜ >> ìš°íšŒì „ ì–‘ìˆ˜ >> ì¢ŒíšŒì „ 0 >> ì¼ì§ì„ ìƒ
 	return (a.x * b.y + b.x * c.y + c.x * a.y) - (a.y * b.x + b.y * c.x + c.y * a.x);
 }
 
-bool cmp_x(point a, point b) {//x±âÁØ Á¤·Ä || x¸¦ y·Î ¹Ù²Ù¸é y±âÁØ Á¤·ÄÀÌ µÊ
+bool cmp_x(point a, point b) {//xê¸°ì¤€ ì •ë ¬ || xë¥¼ yë¡œ ë°”ê¾¸ë©´ yê¸°ì¤€ ì •ë ¬ì´ ë¨
 	if (a.x != b.x) return a.x < b.x;
 	else return a.y < b.y;
 }
 
-bool cmp_c(point a, point b) {//¹İ½Ã°è¹æÇâ Á¤·Ä
+bool cmp_c(point a, point b) {//ë°˜ì‹œê³„ë°©í–¥ ì •ë ¬
 	long long  angle = ccw(temp1, a, b);
 	if (angle != 0)return angle > 0;
 	else return (a.x + a.y) < (b.x + b.y);
@@ -42,9 +43,9 @@ int main()
 	int n;
 
 	while (T--) {
-		//Á¤Á¡ ¼ö
+		//ì •ì  ìˆ˜
 		cin >> n;
-		//ÃÊ±âÈ­
+		//ì´ˆê¸°í™”
 		temp1.x = 1000000001;
 		temp1.y = -1000000001;
 		temp2.x = 1000000001;
@@ -69,8 +70,8 @@ int main()
 		point tt2 = P[1];
 		P[1] = temp2;
 		temp2 = tt2;
-		sort(P.begin() + 2, P.end(), cmp_x);//x ÀÛÀº¼ø Á¤·Ä
-		sort(P.begin() + 2, P.end(), cmp_c);//½ÃÀÛÁ¡ Á¦¿Ü ¹İ½Ã°è¹æÇâÀ¸·Î Á¤·Ä
+		sort(P.begin() + 2, P.end(), cmp_x);//x ì‘ì€ìˆœ ì •ë ¬
+		sort(P.begin() + 2, P.end(), cmp_c);//ì‹œì‘ì  ì œì™¸ ë°˜ì‹œê³„ë°©í–¥ìœ¼ë¡œ ì •ë ¬
 		convex.push_back(P[0]);
 		convex.push_back(P[1]);
 		for (int i = 1; i < P.size(); i++) {
