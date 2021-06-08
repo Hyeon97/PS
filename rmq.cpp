@@ -1,5 +1,5 @@
-//¼¼±×¸ÕÆ® Æ®¸® > 90Á¡ ½Ã°£ÃÊ°ú
-//ÀÎµ¦½º Æ®¸®·Î º¯°æ
+//ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬ > 90ì  ì‹œê°„ì´ˆê³¼ 
+//ì¸ë±ìŠ¤ íŠ¸ë¦¬ë¡œ ë³€ê²½
 #include <iostream>
 #include <algorithm>
 
@@ -18,7 +18,7 @@ struct  node
 	int val;
 };
 
-//node seg[4 * M];//idx ÀúÀå
+//node seg[4 * M];//idx ì €ìž¥
 int seg[4 * M];
 int num[1000011];
 
@@ -92,23 +92,23 @@ int main()
 		seg[size + i].val = 987654321;*/
 		seg[i+size] = M;
 	}
-	//¿¬»êÀ» ÇßÀ»¶§ 0ÀÌÃ¤¿öÁö´Â ³ª¸ÓÁö ¹üÀ§ ¹Û ºÎºÐÀ» ÃÖ´ë ÀÎµ¦½º·Î Ã¤¿öÁÜÀ¸·Î½á Æ®¸® »ý¼º½Ã ¾ø´ÂºÎºÐÀº ÃÖ°í ÀÎµ¦½º°¡ µé¾î°¡ ÀÚµ¿À¸·Î Æ®¸® ¿Ï¼º
+	//ì—°ì‚°ì„ í–ˆì„ë•Œ 0ì´ì±„ì›Œì§€ëŠ” ë‚˜ë¨¸ì§€ ë²”ìœ„ ë°– ë¶€ë¶„ì„ ìµœëŒ€ ì¸ë±ìŠ¤ë¡œ ì±„ì›Œì¤Œìœ¼ë¡œì¨ íŠ¸ë¦¬ ìƒì„±ì‹œ ì—†ëŠ”ë¶€ë¶„ì€ ìµœê³  ì¸ë±ìŠ¤ê°€ ë“¤ì–´ê°€ ìžë™ìœ¼ë¡œ íŠ¸ë¦¬ ì™„ì„±
 	
 	num[M] = 987654321;
-	//¾çÂÊÀÇ ÀÚ½Ä³ëµåÁß ´õ ÀÛÀº ³ëµåÀÇ °ªÀ» °¡Áø ³ëµåÀÇ ÀÎµ¦½º·Î ¾÷µ¥ÀÌÆ® < ÃÖÃÊ ÇÑ¹ø¸¸ ¾÷µ¥ÀÌÆ® >
+	//ì–‘ìª½ì˜ ìžì‹ë…¸ë“œì¤‘ ë” ìž‘ì€ ë…¸ë“œì˜ ê°’ì„ ê°€ì§„ ë…¸ë“œì˜ ì¸ë±ìŠ¤ë¡œ ì—…ë°ì´íŠ¸ < ìµœì´ˆ í•œë²ˆë§Œ ì—…ë°ì´íŠ¸ >
 	for (int i = size - 1; i > 0; i--) {
-		//µÎ°³ÀÇ °ªÀÌ ´Ù¸¥°æ¿ì ÀÛÀºÂÊ ÀÎµ¦½º¸¦ °¡Á®°¨
+		//ë‘ê°œì˜ ê°’ì´ ë‹¤ë¥¸ê²½ìš° ìž‘ì€ìª½ ì¸ë±ìŠ¤ë¥¼ ê°€ì ¸ê°
 		if (num[seg[i * 2]] != num[seg[i * 2 + 1]]) {
 			if (num[seg[i * 2]] < num[seg[i * 2 + 1]]) seg[i] = seg[i * 2];
 			else seg[i] = seg[i * 2 + 1];
 		}
-		//µÎ°³ÀÇ °ªÀÌ °°Àº°æ¿ì ÀÎµ¦½º ÀÛÀº°ª °¡Á®°¨
+		//ë‘ê°œì˜ ê°’ì´ ê°™ì€ê²½ìš° ì¸ë±ìŠ¤ ìž‘ì€ê°’ ê°€ì ¸ê°
 		else seg[i * 2] < seg[i * 2 + 1] ? seg[i] = seg[i * 2] : seg[i] = seg[i * 2 + 1];
 	}
 
 	while (1) {
 		cin >> ty;
-		if (ty == 'q') {//a~b »çÀÌ¿¡¼­ Á¦ÀÏ ÀÛÀº°ªÀÇ ÀÎµ¦½º || ÀÛÀº°ªÀÌ µ¿ÀÏÇÑ °æ¿ì µ¿ÀÏÇÑ °ªµé Áß Á¦ÀÏ ÀÛÀº ÀÎµ¦½º ¸®ÅÏ
+		if (ty == 'q') {//a~b ì‚¬ì´ì—ì„œ ì œì¼ ìž‘ì€ê°’ì˜ ì¸ë±ìŠ¤ || ìž‘ì€ê°’ì´ ë™ì¼í•œ ê²½ìš° ë™ì¼í•œ ê°’ë“¤ ì¤‘ ì œì¼ ìž‘ì€ ì¸ë±ìŠ¤ ë¦¬í„´
 			cin >> a >> b;
 			/*node t = query(1, 0, size - 1, a, b);
 			ans += t.idx;
@@ -117,22 +117,22 @@ int main()
 			ans += query(a+size, b+size);
 			ans %= 100000;
 		}
-		else if (ty == 'c') {//¹è¿­ÀÇ seg[a] = b >> num[a]=b;
+		else if (ty == 'c') {//ë°°ì—´ì˜ seg[a] = b >> num[a]=b;
 			cin >> a >> b;
 			num[seg[size + a]] = b;
 			//update
-			//½ÇÁ¦°ªÀº °ª¸¸ º¯È¯ÇÏ°í À§ÂÊ¸¸ ¹Ù²ãÁÖ¸éµÇ±â ¶§¹®¿¡ /2¿¬»êÀ» ÇØ¼­ ¹Ù·Î ÇÑ´Ü°èÀ§¿¡¼­ºÎÅÍ °»½Å ½ÃÀÛ
+			//ì‹¤ì œê°’ì€ ê°’ë§Œ ë³€í™˜í•˜ê³  ìœ„ìª½ë§Œ ë°”ê¿”ì£¼ë©´ë˜ê¸° ë•Œë¬¸ì— /2ì—°ì‚°ì„ í•´ì„œ ë°”ë¡œ í•œë‹¨ê³„ìœ„ì—ì„œë¶€í„° ê°±ì‹  ì‹œìž‘
 			for (int idx = (a+size) / 2; idx > 0; idx /= 2) {
-				//µÎ°³ÀÇ °ªÀÌ °°Àº°æ¿ì ¿ÞÂÊ°ª °¡Á®°¨
-				if (num[seg[idx * 2]] != num[seg[idx * 2 + 1]]) {//µÎ°³ÀÇ °ªÀÌ ´Ù¸¥°æ¿ì ÀÛÀºÂÊ ÀÎµ¦½º¸¦ °¡Á®°¨
+				//ë‘ê°œì˜ ê°’ì´ ê°™ì€ê²½ìš° ì™¼ìª½ê°’ ê°€ì ¸ê°
+				if (num[seg[idx * 2]] != num[seg[idx * 2 + 1]]) {//ë‘ê°œì˜ ê°’ì´ ë‹¤ë¥¸ê²½ìš° ìž‘ì€ìª½ ì¸ë±ìŠ¤ë¥¼ ê°€ì ¸ê°
 					if (num[seg[idx * 2]] < num[seg[idx * 2 + 1]]) seg[idx] = seg[idx * 2];
 					else seg[idx] = seg[idx * 2 + 1];
 				}
-				//µÎ°³ÀÇ °ªÀÌ °°Àº°æ¿ì ÀÎµ¦½º ÀÛÀº°ª °¡Á®°¨
+				//ë‘ê°œì˜ ê°’ì´ ê°™ì€ê²½ìš° ì¸ë±ìŠ¤ ìž‘ì€ê°’ ê°€ì ¸ê°
 				else seg[idx * 2] < seg[idx * 2 + 1] ? seg[idx] = seg[idx * 2] : seg[idx] = seg[idx * 2 + 1];
 			}
 		}
-		else//Á¾·á s
+		else//ì¢…ë£Œ s
 			break;
 	}
 	cout << ans;
